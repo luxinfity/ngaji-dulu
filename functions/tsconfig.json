@@ -9,6 +9,7 @@
     "target": "es2017"
   },
   "compileOnSave": true,
+  "indent": [true, "spaces", 4],
   "include": [
     "src"
   ]
