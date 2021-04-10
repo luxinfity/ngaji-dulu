@@ -51,7 +51,10 @@ export const webHook = functions.https.onRequest((request, response) => {
     response.status(400).send("Please send a POST request");
     return;
   }
-  functions.logger.log("Incoming message", request.body);
+
+  functions.logger.info(
+      "Incoming message", {data: request.body}
+  );
 
   bot.handleUpdate(request.body, response);
   response.status(200).send("WebHook accepted!");
