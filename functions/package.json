@@ -11,7 +11,7 @@
     "watch": "nodemon -e ts --exec \"npm run serve\""
   },
   "engines": {
-    "node": "12"
+    "node": "15"
   },
   "main": "lib/index.js",
   "dependencies": {
