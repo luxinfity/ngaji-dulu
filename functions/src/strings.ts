@@ -4,11 +4,12 @@ melakukan pengukuran terhadap kebiasaan tilawah mu.
 Guna meningkatkan kebiasaan positif bertilawah selama bulan Ramadan ini. 
 Baca tutorial lengkap di [sini](https://luxinfity.github.io/ngaji-dulu/).
 
-Untuk memunculkan kembali pesan ini ketikkan /help.
-Untuk mulai mengaji ketikkan /read.
-Untuk melihat progress kamu ini ketikkan /profile.
-Untuk merestart progress kamu ini ketikkan /reset.
-Untuk berhenti menggunakan bot /quit.
+Ketikkan
+/help - Untuk memunculkan kembali pesan ini
+/read - Untuk mulai mengaji ketikkan.
+/profile - Untuk melihat progress kamu ini ketikkan.
+/reset - Untuk merestart progress kamu ini ketikkan.
+/quit - Untuk berhenti menggunakan bot.
 
 Jika ada saran dan masukan silahkan (chat)[t.me/alifgiant] admin kami
 `;
