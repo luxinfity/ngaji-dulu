@@ -15,7 +15,24 @@ Ketikkan
 Jika ada saran dan masukan silahkan [chat](t\\.me/alifgiant) admin kami
 `;
 
-export const readReply = "mulai mengaji";
+export const readStartReply = `
+Agar bot ini dapat mencatat tilawah mu, kamu perlu mengirimkan rekaman kepada bot ini.
+
+Bisa dengan merekam menggunakan aplikai voice recorder di hp mu lalu share ke bot,
+ataupun menggunakan voice message (tekan dan tahan tombol mic lalu geser ke ikon gembok). 
+
+Sesi tilawah bisa dimulai dengan mengirimkan rekaman telebih dahulu ataupun memilih surah dahulu dengan klik tombol dibawah.
+`;
+
+export const readEndReply = `
+Kamu sudah memilih posisi mulai, silahkan pilih posisi akhir bacaaan dengan mengklik tombol dibawah.
+`;
+
+export const pleaseSelectAyat = "silahkan tuliskan ayat";
+export function selectAyatReply(surahName: string, isStart: boolean): string {
+  const flag = isStart ? "mulai" : "akhir";
+  return `Kamu memilih ${surahName}, ${pleaseSelectAyat} ${flag}`;
+}
 
 export const profileReply = `
 Kamu sudah menyelesaikan membaca quran xx%

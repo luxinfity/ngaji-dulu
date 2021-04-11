@@ -30,6 +30,9 @@ bot.catch((err, ctx) => {
   ctx.reply(`Ooops, encountered an error for ${ctx.updateType}`);
 });
 
+// Listen for surah query
+bot.on("inline_query", (ctx) => Tilawah.querySurah(ctx));
+
 // Listen for basic command
 bot.command("/start", (ctx) => User.addNewUser(ctx));
 bot.command("/help", (ctx) => ctx.replyWithMarkdownV2(strings.startReply));
@@ -41,15 +44,23 @@ bot.command("/quit", (ctx) => {
   ctx.leaveChat();
 });
 
-// Listen for surah query
-bot.on("inline_query", (ctx) => Tilawah.querySurah(ctx));
+
+// Tilawah session command
+bot.command("/read_start", (ctx) => Tilawah.selectAyat(ctx, ctx.message.text));
+bot.on("text", (ctx) => {
+  if (!ctx.message.reply_to_message
+    // && ctx.message.text.includes(strings.pleaseSelectAyat) // TODO: replace to check user state
+  ) {
+    Tilawah.selectNextSurah(ctx, ctx.message.text);
+  }
+});
 
 // TODO: default handler
 // receive message with type text
-bot.on("text", (ctx) => ctx.reply("recieve message text"));
+// bot.on("text", (ctx) => ctx.reply("recieve message text"));
 bot.on("voice", (ctx) => ctx.reply("recieve voice message"));
 // copy every message and send to the user
-bot.on("message", (ctx) => ctx.telegram.sendCopy(ctx.chat.id, ctx.message));
+bot.on("message", (ctx) => ctx.copyMessage(ctx.chat.id));
 
 // Check for POST request, since telegram will only sent a post req
 // so no other source will be handled
