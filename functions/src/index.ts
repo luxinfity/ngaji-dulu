@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
 import { Telegraf } from "telegraf";
 import * as dotenv from "dotenv";
-import { BotContext } from "./core/shared";
+import { BotContext } from "./core/bot-context";
 import * as strings from "./core/strings";
 import * as User from "./usecase/users";
 
@@ -19,7 +19,7 @@ const bot = new Telegraf<BotContext>(
 // Register middleware and launch your bot as usual
 bot.use((ctx, next) => {
   ctx.firstName = ctx.from?.first_name;
-  ctx.userId = ctx.from?.id;
+  ctx.userId = ctx.from?.id.toString() ?? "";
   return next();
 });
 
