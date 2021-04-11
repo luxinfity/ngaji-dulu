@@ -1,8 +1,8 @@
 export const startReply = `
 Bot ini berfungsi untuk membantu kamu,
 melakukan pengukuran terhadap kebiasaan tilawah mu.
-Guna meningkatkan kebiasaan positif bertilawah selama
-bulan Ramadan ini. Untuk tutorial penggunaan silahkan lihat di [sini](https://luxinfity.github.io/ngaji-dulu/).
+Guna meningkatkan kebiasaan positif bertilawah selama bulan Ramadan ini. 
+Baca tutorial lengkap di [sini](https://luxinfity.github.io/ngaji-dulu/).
 
 Untuk memunculkan kembali pesan ini ketikkan /help.
 Untuk mulai mengaji ketikkan /read.
@@ -13,7 +13,7 @@ Untuk berhenti menggunakan bot /quit.
 Jika ada saran dan masukan silahkan (chat)[t.me/alifgiant] admin kami
 `;
 
-export const readReply = `mulai mengai`;
+export const readReply = "mulai mengai";
 
 export const profileReply = `
 Kamu sudah menyelesaikan membaca quran xx%
@@ -21,6 +21,8 @@ Minggu ini kamu mengaji total x jam nn menit.
 Silahkan klik [disini](https://google.com) untuk melihat lebih banyak statistik.
 `;
 
-export const resetReply = `progress mu telah di reset`;
+export const resetReply = "progress mu telah di reset";
 
-export const quitReply = `Semoga amal ibadah diterima disisinya, sampai berjumpa lagi`;
+export const quitReply = `
+Semoga amal ibadah kita diterima disisinya, sampai berjumpa lagi
+`;
