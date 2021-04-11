@@ -48,7 +48,7 @@ bot.command("/quit", (ctx) => {
 // Tilawah session command
 bot.command("/read_start", (ctx) => Tilawah.selectAyat(ctx, ctx.message.text));
 bot.on("text", (ctx) => {
-  if (!ctx.message.reply_to_message
+  if (ctx.message.reply_to_message
     // && ctx.message.text.includes(strings.pleaseSelectAyat) // TODO: replace to check user state
   ) {
     Tilawah.selectNextSurah(ctx, ctx.message.text);

@@ -77,6 +77,6 @@ export async function selectNextSurah(ctx: BotContext, text: string): Promise<vo
   const keyboard = tt.Markup.inlineKeyboard([
     tt.Markup.button.switchToCurrentChat("Ketik surah akhir", ""),
   ]);
-  ctx.reply(strings.readStartReply, keyboard);
+  ctx.reply(strings.readEndReply, keyboard);
   // TODO: UPDATE STATE to DB
 }
