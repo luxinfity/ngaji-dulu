@@ -31,7 +31,7 @@ export async function querySurah(ctx: BotContext): Promise<void> {
   const result = info.chapters.filter((data) => {
     return data.name_simple.toLocaleLowerCase().includes(query);
   }).map((data) => {
-    const shortDesc = `${data.translated_name.name} ${data.verses_count} ayat, ${data.revelation_place}`;
+    const shortDesc = `${data.translated_name.name}, ${data.verses_count} ayat, ${data.revelation_place}`;
     // TODO: check user state, did user already select start surah
     const actionText = `/read_start@ngajidulubot ${data.name_simple}`
     return {

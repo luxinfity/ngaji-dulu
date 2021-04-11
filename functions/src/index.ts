@@ -44,12 +44,10 @@ bot.command("/quit", (ctx) => {
 // Listen for surah query
 bot.on("inline_query", (ctx) => Tilawah.querySurah(ctx));
 
+// TODO: default handler
 // receive message with type text
 bot.on("text", (ctx) => ctx.reply("recieve message text"));
-
-// receive message with type text
 bot.on("voice", (ctx) => ctx.reply("recieve voice message"));
-
 // copy every message and send to the user
 bot.on("message", (ctx) => ctx.telegram.sendCopy(ctx.chat.id, ctx.message));
 
