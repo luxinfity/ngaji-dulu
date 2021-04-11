@@ -28,7 +28,7 @@ export const readEndReply = `
 Kamu sudah memilih posisi mulai, silahkan pilih posisi akhir bacaaan dengan mengklik tombol dibawah.
 `;
 
-export const pleaseSelectAyat = "silahkan tuliskan ayat";
+export const pleaseSelectAyat = "silahkan reply chat ini dan tuliskan ayat";
 export function selectAyatReply(surahName: string, isStart: boolean): string {
   const flag = isStart ? "mulai" : "akhir";
   return `Kamu memilih ${surahName}, ${pleaseSelectAyat} ${flag}`;
