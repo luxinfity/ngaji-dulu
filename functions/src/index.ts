@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 import { BotContext } from "./core/bot-context";
 import * as strings from "./core/strings";
 import * as User from "./usecase/users";
+import * as Tilawah from "./usecase/tilawah";
 
 dotenv.config();
 admin.initializeApp();
@@ -32,13 +33,16 @@ bot.catch((err, ctx) => {
 // Listen for basic command
 bot.command("/start", (ctx) => User.addNewUser(ctx));
 bot.command("/help", (ctx) => ctx.replyWithMarkdownV2(strings.startReply));
-bot.command("/read", (ctx) => ctx.reply(strings.readReply));
+bot.command("/read", (ctx) => Tilawah.start(ctx));
 bot.command("/profile", (ctx) => ctx.replyWithMarkdownV2(strings.profileReply));
 bot.command("/reset", (ctx) => ctx.reply(strings.resetReply));
 bot.command("/quit", (ctx) => {
   ctx.reply(strings.quitReply);
   ctx.leaveChat();
 });
+
+// Listen for surah query
+bot.on("inline_query", (ctx) => Tilawah.querySurah(ctx));
 
 // receive message with type text
 bot.on("text", (ctx) => ctx.reply("recieve message text"));

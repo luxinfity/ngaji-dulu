@@ -1,7 +1,6 @@
 {
   "name": "ngaji-dulu-bot",
   "scripts": {
-    "lint": "eslint --fix --ext .js,.ts .",
     "build": "tsc",
     "serve": "npm run build && firebase emulators:start --only functions,firestore",
     "shell": "npm run build && firebase functions:shell",

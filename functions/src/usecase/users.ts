@@ -1,14 +1,14 @@
 import * as admin from "firebase-admin";
-import { BotContext } from "../core/bot-context";
+import {BotContext} from "../core/bot-context";
 import * as strings from "../core/strings";
 
 /**
  * Add a new user to firestore database.
  * and reply user chat with welcome message
  * @param {BotContext} ctx context of the current chat event
- * @returns {void}
+ * @return {Promise<void>}
  */
-export async function addNewUser(ctx: BotContext) {
+export async function addNewUser(ctx: BotContext): Promise<void> {
   ctx.replyWithMarkdownV2(strings.startReply);
   if (!ctx.userId || !ctx.from) return;
 
