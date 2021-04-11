@@ -1,7 +1,7 @@
 // The Firebase Admin SDK to access Firestore.
 import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
-import {Context, Telegraf} from "telegraf";
+import { Context, Telegraf } from "telegraf";
 import * as dotenv from "dotenv";
 import * as strings from "./strings";
 
@@ -10,14 +10,14 @@ dotenv.config();
 admin.initializeApp();
 
 interface MyContext extends Context {
-    firstName?: string
-    userId?: number
+  firstName?: string
+  userId?: number
 }
 
 const token = process.env.TELEGRAM_TOKEN || functions.config().telegram.token;
 const bot = new Telegraf<MyContext>(
-    token,
-    {telegram: {webhookReply: true}}
+  token,
+  { telegram: { webhookReply: true } }
 );
 
 // Register middleware and launch your bot as usual
@@ -64,7 +64,7 @@ export const webHook = functions.https.onRequest((request, response) => {
   }
 
   functions.logger.info(
-      "Incoming message", {data: request.body}
+    "Incoming message", { data: request.body }
   );
 
   bot.handleUpdate(request.body, response);
