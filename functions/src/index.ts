@@ -35,10 +35,10 @@ bot.catch((err, ctx) => {
 });
 
 // Listen for basic command
-bot.command("/start", (ctx) => ctx.reply(strings.startReply));
-bot.command("/help", (ctx) => ctx.reply(strings.startReply));
+bot.command("/start", (ctx) => ctx.replyWithMarkdownV2(strings.startReply));
+bot.command("/help", (ctx) => ctx.replyWithMarkdownV2(strings.startReply));
 bot.command("/read", (ctx) => ctx.reply(strings.readReply));
-bot.command("/profile", (ctx) => ctx.reply(strings.profileReply));
+bot.command("/profile", (ctx) => ctx.replyWithMarkdownV2(strings.profileReply));
 bot.command("/reset", (ctx) => ctx.reply(strings.resetReply));
 bot.command("/quit", (ctx) => {
   ctx.reply(strings.quitReply);
