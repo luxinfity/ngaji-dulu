@@ -1,4 +1,4 @@
-import { Context } from "telegraf";
+import {Context} from "telegraf";
 
 export interface BotContext extends Context {
     firstName?: string
