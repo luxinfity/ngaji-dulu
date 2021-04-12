@@ -5,8 +5,8 @@ import { Telegraf } from "telegraf";
 import * as dotenv from "dotenv";
 import { BotContext } from "./core/bot-context";
 import * as strings from "./core/strings";
-import * as User from "./usecase/users";
-import * as Tilawah from "./usecase/tilawah";
+import * as User from "./usecase/user_usecase";
+import * as Tilawah from "./usecase/tilawah_usecase";
 
 dotenv.config();
 admin.initializeApp();
