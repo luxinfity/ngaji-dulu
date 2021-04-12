@@ -14,7 +14,7 @@ export async function saveUser(user: User): Promise<void> {
     const doc = db.collection("users").doc(user.id);
     const snapshot = await doc.get();
     if (!snapshot.exists) {
-      doc.set(user);
+      doc.set(Object.assign({}, user));
       stat.increaseUser();
     }
   } catch (error) {

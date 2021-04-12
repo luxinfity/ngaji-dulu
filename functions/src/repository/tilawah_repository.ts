@@ -15,7 +15,7 @@ export async function createTilawah(tilawah: Tilawah): Promise<void> {
   try {
     if (!tilawah.id) {
       // create new instance
-      let doc = await collection.add(tilawah);
+      let doc = await collection.add(Object.assign({}, tilawah));
       tilawah.id = doc.id;
       await collection.doc(tilawah.id).update({ "id": tilawah.id });
       stat.increaseTilawah();
@@ -41,5 +41,5 @@ export async function editTilawah(tilawah: Tilawah): Promise<void> {
     return;
   }
 
-  await collection.doc(tilawah.id).update(tilawah);
+  await collection.doc(tilawah.id).update(Object.assign({}, tilawah));
 }

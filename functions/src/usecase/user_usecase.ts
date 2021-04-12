@@ -10,9 +10,7 @@ import * as userRepo from "../repository/user_repository";
  * @return {Promise<void>}
  */
 export async function addNewUser(ctx: BotContext): Promise<void> {
-  ctx.replyWithMarkdownV2(strings.startReply);
   if (!ctx.userId || !ctx.from) return;
-
   const user = new User(
     ctx.userId,
     ctx.from.is_bot,
@@ -20,7 +18,8 @@ export async function addNewUser(ctx: BotContext): Promise<void> {
     ctx.from.username,
     ctx.from.last_name
   );
-  userRepo.saveUser(user);
+  await userRepo.saveUser(user);
+  ctx.replyWithMarkdownV2(strings.startReply);
 }
 
 // function getUserStatus() {
