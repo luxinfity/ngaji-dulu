@@ -1,9 +1,9 @@
 import { firestore } from "firebase-admin";
 
 export class Tilawah {
-  id: string;
-  timestamp: firestore.Timestamp;
   userId: string;
+  timestamp: firestore.Timestamp;
+  id?: string;
   voiceFileId?: string;
   surahStart?: string;
   surahEnd?: string;
@@ -11,18 +11,18 @@ export class Tilawah {
   ayatEnd?: number;
 
   constructor(
-    id: string,
-    timestamp: firestore.Timestamp,
     userId: string,
+    timestamp: firestore.Timestamp,
+    id?: string,
     voiceFileId?: string,
     surahStart?: string,
     surahEnd?: string,
     ayatStart?: number,
     ayatEnd?: number
   ) {
-    this.id = id;
-    this.timestamp = timestamp;
     this.userId = userId;
+    this.timestamp = timestamp;
+    this.id = id;
     this.voiceFileId = voiceFileId;
     this.surahStart = surahStart;
     this.surahEnd = surahEnd;

@@ -1,32 +1,33 @@
 // import * as admin from "firebase-admin";
-import * as tt from "telegraf";
+import { Markup } from "telegraf";
+import { firestore } from "firebase-admin";
 import { BotContext } from "../core/bot-context";
 import * as strings from "../core/strings";
+import { Tilawah } from "../model/tilawah";
 import info from "../raw_data/quran-info.json";
+import * as tilawahRepo from "../repository/tilawah_repository";
 
 /**
  * Add a new user to firestore database.
  * and reply user chat with welcome message
  * @param {BotContext} ctx context of the current chat event
  * @return {Promise<void>}
+ *  
+ * we only need to save voice file id to retrieve recording file later
+ * https://stackoverflow.com/questions/63436620/how-to-download-an-audio-message-from-a-user-in-a-telegram-bot
  */
 export async function start(ctx: BotContext): Promise<void> {
-  const keyboard = tt.Markup.inlineKeyboard([
-    tt.Markup.button.switchToCurrentChat("Ketik surah mulai", ""),
+  const record = new Tilawah(
+    ctx.userId,
+    firestore.Timestamp.fromMillis(Date.now())
+  );
+  await tilawahRepo.createTilawah(record);
+
+  const keyboard = Markup.inlineKeyboard([
+    Markup.button.switchToCurrentChat("Ketik surah mulai", ""),
   ]);
-  ctx.reply(strings.readStartReply, keyboard);
-  // TODO: SAVE EMPTY STATE to DB
-  // {
-  //    userId: <>,
-  //    date: now(),
-  //    recordingId: <>, https://stackoverflow.com/questions/63436620/how-to-download-an-audio-message-from-a-user-in-a-telegram-bot
-  //    surah_start: <>,
-  //    ayat_start: <>,
-  //    surah_end: <>,
-  //    ayat_end: <>,
-  //  }
   // TODO: check hari sama hari
-  //
+  ctx.reply(strings.readStartReply, keyboard);
 }
 
 /**
@@ -69,7 +70,7 @@ export async function querySurah(ctx: BotContext): Promise<void> {
  */
 export async function selectAyat(ctx: BotContext, text: string): Promise<void> {
   const surahName = text.substring(12);
-  const keyboard = tt.Markup.forceReply();
+  const keyboard = Markup.forceReply();
   // TODO: check user state, did user already select start surah
   ctx.reply(strings.selectAyatReply(surahName, true), keyboard);
 }
@@ -85,8 +86,8 @@ export async function selectNextSurah(ctx: BotContext, text: string): Promise<vo
   const number = Number(text);
   if (!number) return;
 
-  const keyboard = tt.Markup.inlineKeyboard([
-    tt.Markup.button.switchToCurrentChat("Ketik surah akhir", ""),
+  const keyboard = Markup.inlineKeyboard([
+    Markup.button.switchToCurrentChat("Ketik surah akhir", ""),
   ]);
   ctx.reply(strings.readEndReply, keyboard);
   // TODO: UPDATE STATE to DB
