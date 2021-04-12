@@ -14,6 +14,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "class-transformer": "^0.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase-admin": "^9.2.0",

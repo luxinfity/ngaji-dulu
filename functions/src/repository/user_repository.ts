@@ -1,5 +1,6 @@
 import { logger } from "firebase-functions";
 import { firestore } from "firebase-admin";
+import { classToPlain } from 'class-transformer';
 import { User } from "../model/user";
 import * as stat from "./statistic_repository";
 
@@ -14,7 +15,8 @@ export async function saveUser(user: User): Promise<void> {
     const doc = db.collection("users").doc(user.id);
     const snapshot = await doc.get();
     if (!snapshot.exists) {
-      doc.set(Object.assign({}, user));
+      const data = classToPlain(user, { exposeUnsetFields: false });
+      doc.set(data);
       stat.increaseUser();
     }
   } catch (error) {

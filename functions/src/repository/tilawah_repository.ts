@@ -1,5 +1,6 @@
-import { Tilawah } from "../model/tilawah";
+import { classToPlain } from 'class-transformer';
 import { firestore } from "firebase-admin";
+import { Tilawah } from "../model/tilawah";
 import { logger } from "firebase-functions";
 import * as stat from "./statistic_repository";
 
@@ -15,9 +16,9 @@ export async function createTilawah(tilawah: Tilawah): Promise<void> {
   try {
     if (!tilawah.id) {
       // create new instance
-      let doc = await collection.add(Object.assign({}, tilawah));
-      tilawah.id = doc.id;
-      await collection.doc(tilawah.id).update({ "id": tilawah.id });
+      const data = classToPlain(tilawah, { exposeUnsetFields: false });
+      let doc = await collection.add(Object.assign({}, data));
+      await collection.doc(doc.id).update({ "id": doc.id });
       stat.increaseTilawah();
     } else {
       logger.error(`record with ${tilawah.id} is already exist, consider using editTilawah()`);
@@ -41,5 +42,6 @@ export async function editTilawah(tilawah: Tilawah): Promise<void> {
     return;
   }
 
-  await collection.doc(tilawah.id).update(Object.assign({}, tilawah));
+  const data = classToPlain(tilawah, { exposeUnsetFields: false });
+  await collection.doc(tilawah.id).update(data);
 }
