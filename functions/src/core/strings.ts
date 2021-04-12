@@ -18,10 +18,10 @@ Jika ada saran dan masukan silahkan [chat](t\\.me/alifgiant) admin kami
 export const readStartReply = `
 Agar bot ini dapat mencatat tilawah mu, kamu perlu mengirimkan rekaman kepada bot ini.
 
-Bisa dengan merekam menggunakan aplikai voice recorder di hp mu lalu share ke bot,
-ataupun menggunakan voice message (tekan dan tahan tombol mic lalu geser ke ikon gembok). 
+Bisa dengan merekam menggunakan aplikai voice recorder di hp mu lalu share ke bot, ataupun menggunakan voice message (tekan dan tahan tombol mic lalu geser ke ikon gembok). 
 
 Sesi tilawah bisa dimulai dengan mengirimkan rekaman telebih dahulu ataupun memilih surah dahulu dengan klik tombol dibawah.
+Jika kamu salah memasukkan surah dan ayat, silahkan ulangi menulis /read
 `;
 
 export const readEndReply = `
