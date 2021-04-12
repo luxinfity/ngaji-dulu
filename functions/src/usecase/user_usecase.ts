@@ -1,6 +1,6 @@
 import { BotContext } from "../core/bot-context";
 import * as strings from "../core/strings";
-import { User } from "../model/user_model";
+import { User } from "../model/user";
 import * as userRepo from "../repository/user_repository";
 
 /**

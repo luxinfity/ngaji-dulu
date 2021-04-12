@@ -1,4 +1,4 @@
-import { User } from "../model/user_model";
+import { User } from "../model/user";
 import * as admin from "firebase-admin";
 
 export async function saveUser(user: User) {
