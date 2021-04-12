@@ -65,16 +65,19 @@ bot.on("message", (ctx) => ctx.copyMessage(ctx.chat.id));
 // Check for POST request, since telegram will only sent a post req
 // so no other source will be handled
 // https://core.telegram.org/bots/api#recent-changes
-export const webHook = functions.https.onRequest((request, response) => {
-  if (request.method !== "POST") {
-    response.status(400).send("Please send a POST request");
-    return;
-  }
+export const webHook = functions
+  .region('asia-southeast2')
+  .https
+  .onRequest((request, response) => {
+    if (request.method !== "POST") {
+      response.status(400).send("Please send a POST request");
+      return;
+    }
 
-  functions.logger.info(
-    "Incoming message", { data: request.body }
-  );
+    functions.logger.info(
+      "Incoming message", { data: request.body }
+    );
 
-  bot.handleUpdate(request.body, response);
-  response.status(200).send("WebHook accepted!");
-});
+    bot.handleUpdate(request.body, response);
+    response.status(200).send("WebHook accepted!");
+  });
