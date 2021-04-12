@@ -16,6 +16,17 @@ export async function start(ctx: BotContext): Promise<void> {
   ]);
   ctx.reply(strings.readStartReply, keyboard);
   // TODO: SAVE EMPTY STATE to DB
+  // {
+  //    userId: <>,
+  //    date: now(),
+  //    recordingId: <>, https://stackoverflow.com/questions/63436620/how-to-download-an-audio-message-from-a-user-in-a-telegram-bot
+  //    surah_start: <>,
+  //    ayat_start: <>,
+  //    surah_end: <>,
+  //    ayat_end: <>,
+  //  }
+  // TODO: check hari sama hari
+  //
 }
 
 /**
