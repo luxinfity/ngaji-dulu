@@ -44,7 +44,6 @@ bot.command("/quit", (ctx) => {
   ctx.leaveChat();
 });
 
-
 // Tilawah session command
 bot.command("/read_start", (ctx) => Tilawah.selectAyat(ctx, ctx.message.text));
 // bot.command("/read_stop", (ctx) => Tilawah.selectAyat(ctx, ctx.message.text));
