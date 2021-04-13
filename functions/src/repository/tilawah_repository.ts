@@ -29,6 +29,43 @@ export async function createTilawah(tilawah: Tilawah): Promise<void> {
 }
 
 /**
+ * search last tilawah record
+ * @param {Tilawah} tilawah record data
+ * @return {Promise<void>}
+ */
+export async function getLastTilawah(userId: string): Promise<Tilawah | null> {
+  const db = firestore();
+  const collection = db.collection("records");
+
+  try {
+    var snapshot = await collection
+      .where("userId", "==", userId)
+      .orderBy('timestamp', 'desc')
+      .limit(1)
+      .get();
+
+
+    if (snapshot.docs.length == 1) {
+
+    }
+
+    // if (!tilawah.id) {
+    //   // create new instance
+    //   const data = classToPlain(tilawah, { exposeUnsetFields: false });
+    //   let doc = await collection.add(Object.assign({}, data));
+    //   await collection.doc(doc.id).update({ "id": doc.id });
+    //   stat.increaseTilawah();
+    // } else {
+    //   logger.error(`record with ${tilawah.id} is already exist, consider using editTilawah()`);
+    // }
+    return null;
+  } catch (error) {
+    logger.error(error);
+    return null;
+  }
+}
+
+/**
  * edit tilawah record
  * @param {Tilawah} tilawah record data
  * @return {Promise<void>}
